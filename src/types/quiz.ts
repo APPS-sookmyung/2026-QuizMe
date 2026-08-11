@@ -7,6 +7,32 @@ export type QuizQuestion = {
   explanation?: string;
 };
 
+export type Flashcard = {
+  term: string;
+  definition: string;
+};
+
+export type SavedQuizSession = {
+  id: string;
+  sourceText: string;
+  questionType: string;
+  questionCount: string;
+  questions: QuizQuestion[];
+  answers: Record<number, string>;
+  isGraded: boolean;
+  createdAt: string;
+  correctCount: number;
+  totalQuestions: number;
+};
+
+export type SavedFlashcardSet = {
+  id: string;
+  sourceText: string;
+  count: string;
+  flashcards: Flashcard[];
+  createdAt: string;
+};
+
 export type QuizAppState = {
   sourceText: string;
   questionType: string;
@@ -17,4 +43,11 @@ export type QuizAppState = {
   status: string;
   isLoading: boolean;
   error?: string;
+  flashcards: Flashcard[];
+  flashcardIndex: number;
+  isFlipped: boolean;
+  mode: 'quiz' | 'flashcard';
+  savedSessions: SavedQuizSession[];
+  selectedSessionId: string | null;
+  savedFlashcardSets: SavedFlashcardSet[];
 };
