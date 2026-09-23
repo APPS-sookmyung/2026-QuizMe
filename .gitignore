@@ -36,3 +36,5 @@ coverage/
 # Editors
 .vscode/
 .idea/
+.vercel
+.env*
