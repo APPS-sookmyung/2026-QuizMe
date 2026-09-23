@@ -20,7 +20,9 @@ export function useAuth() {
     if (!supabase) return;
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: window.location.origin },
+      // Trailing slash so it matches Supabase allow-list patterns like `https://host/**`;
+      // a bare origin fails the match and Supabase silently falls back to the Site URL.
+      options: { redirectTo: `${window.location.origin}/` },
     });
     if (error) throw error;
   };
