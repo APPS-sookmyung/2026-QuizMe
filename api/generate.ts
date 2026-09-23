@@ -1,6 +1,6 @@
-import { authenticate } from './_auth';
-import { fetchGemini } from './_gemini';
-import { buildFlashcardPrompt, buildQuizPrompt, FLASHCARD_SCHEMA, parseGenerateRequest, quizSchema } from './_prompts';
+import { authenticate } from './_auth.js';
+import { fetchGemini } from './_gemini.js';
+import { buildFlashcardPrompt, buildQuizPrompt, FLASHCARD_SCHEMA, parseGenerateRequest, quizSchema } from './_prompts.js';
 
 type Req = { method?: string; headers?: Record<string, string | string[] | undefined>; body?: unknown };
 type Res = { status: (code: number) => Res; json: (body: unknown) => void };

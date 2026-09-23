@@ -1,6 +1,6 @@
 import { PDFParse } from 'pdf-parse';
-import { authenticate } from './_auth';
-import { fetchGemini, type GeminiResponse } from './_gemini';
+import { authenticate } from './_auth.js';
+import { fetchGemini, type GeminiResponse } from './_gemini.js';
 
 type Req = { method?: string; headers?: Record<string, string | string[] | undefined>; body?: { fileBase64?: unknown } };
 type Res = { status: (code: number) => Res; json: (body: unknown) => void };
