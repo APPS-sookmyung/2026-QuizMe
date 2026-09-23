@@ -1,3 +1,6 @@
+// Must load before pdf-parse: pdfjs needs DOMMatrix at import time, which this module
+// polyfills from @napi-rs/canvas. The static import also makes Vercel bundle the canvas binary.
+import { CanvasFactory } from 'pdf-parse/worker';
 import { PDFParse } from 'pdf-parse';
 import { authenticate } from './_auth.js';
 import { fetchGemini, type GeminiResponse } from './_gemini.js';
@@ -32,7 +35,7 @@ export default async function handler(req: Req, res: Res) {
     return;
   }
 
-  const parser = new PDFParse({ data: Buffer.from(fileBase64, 'base64') });
+  const parser = new PDFParse({ data: Buffer.from(fileBase64, 'base64'), CanvasFactory });
   let textResult;
   try {
     textResult = await parser.getText();
