@@ -9,7 +9,7 @@ import {
   type GenerationKind,
   type GenerationOptions,
   type QuestionType,
-} from '../src/shared/generation';
+} from '../src/shared/generation.js';
 
 export type GenerateRequest = {
   kind: GenerationKind;
